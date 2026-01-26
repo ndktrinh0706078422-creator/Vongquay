@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Vòng quay may mắn</title>
+  <script src="data.js"></script>
+</head>
+<body>
+
+<h1>🎉 Vòng quay may mắn 🎉</h1>
+
+<input id="codeInput" placeholder="Nhập mã" />
+<button onclick="spin()">Quay</button>
+
+<h2 id="result"></h2>
+
+<script>
+function spin() {
+  let code = document.getElementById("codeInput").value;
+
+  if (!(code in codes)) {
+    alert("Mã không hợp lệ");
+    return;
+  }
+
+  if (codes[code]) {
+    alert("Mã đã dùng");
+    return;
+  }
+
+  let available = prizes.filter(p => p.qty > 0);
+  if (available.length === 0) {
+    alert("Hết quà");
+    return;
+  }
+
+  let prize = available[Math.floor(Math.random() * available.length)];
+  prize.qty--;
+  codes[code] = true;
+
+  document.getElementById("result").innerText = "🎁 Bạn trúng: " + prize.name;
+}
+</script>
+
+</body>
+</html>

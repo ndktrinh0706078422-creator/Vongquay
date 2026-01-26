@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Kết quả quay</title>
+  <script src="data.js"></script>
+</head>
+<body>
+
+<h1>📊 Trang quản lý</h1>
+<button onclick="show()">Xem tình trạng</button>
+
+<pre id="output"></pre>
+
+<script>
+function show() {
+  let text = "QUÀ:\n";
+  prizes.forEach(p => {
+    text += p.name + " : còn " + p.qty + "\n";
+  });
+
+  text += "\nMÃ:\n";
+  for (let c in codes) {
+    text += c + " : " + (codes[c] ? "Đã dùng" : "Chưa dùng") + "\n";
+  }
+
+  document.getElementById("output").innerText = text;
+}
+</script>
+
+</body>
+</html>
