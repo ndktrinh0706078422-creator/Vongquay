@@ -1,0 +1,23 @@
+let prizes = [
+  { name: "Freeship", qty: 1 },
+  { name: "1 phần đồ thêm mì bất kỳ", qty: 1 },
+  { name: "1 ly nước bất kỳ", qty: 1 },
+  { name: "Giảm 50K", qty: 1 },
+  { name: "Tôm Tempura", qty: 1 },
+  { name: "Takoyaki 6 viên", qty: 1 },
+  { name: "Gà cay phô mai", qty: 1 },
+  { name: "Ngôi sao may mắn", qty: 1 },
+  { name: "Voucher 100K", qty: 1 }
+];
+
+let codes = {
+  "CODE01": false,
+  "CODE02": false,
+  "CODE03": false,
+  "CODE04": false,
+  "CODE05": false,
+  "CODE06": false,
+  "CODE07": false,
+  "CODE08": false,
+  "CODE09": false
+};
