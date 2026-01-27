@@ -1,43 +1,97 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Vòng quay may mắn</title>
+<meta charset="UTF-8">
+<title>Vòng quay may mắn</title>
+<style>
+body { text-align:center; font-family:sans-serif; }
+#wheel {
+  width:300px; height:300px;
+  border-radius:50%;
+  border:8px solid gold;
+  margin:20px auto;
+  background: conic-gradient(
+    #ff9999 0deg 40deg,
+    #99ff99 40deg 80deg,
+    #9999ff 80deg 120deg,
+    #ffff99 120deg 160deg,
+    #ffcc99 160deg 200deg,
+    #cc99ff 200deg 240deg,
+    #99ffff 240deg 280deg,
+    #ff99cc 280deg 320deg,
+    #cccccc 320deg 360deg
+  );
+  transition: transform 4s ease-out;
+}
+#pointer{
+  width:0;height:0;
+  border-left:15px solid transparent;
+  border-right:15px solid transparent;
+  border-bottom:25px solid red;
+  margin:auto;
+}
+</style>
 </head>
 <body>
 
 <h1>🎉 Vòng quay may mắn 🎉</h1>
+<div id="pointer"></div>
+<div id="wheel"></div>
 
-<input id="codeInput" placeholder="Nhập mã" />
-<button onclick="spin()">Quay</button>
+<input id="code" placeholder="Nhập mã">
+<br><br>
+<button onclick="spin()">QUAY</button>
 
 <h2 id="result"></h2>
 
 <script>
-function spin() {
-  let code = document.getElementById("codeInput").value;
+let prizes = [
+"Freeship",
+"1 phần đồ thêm mì bất kỳ",
+"1 ly nước bất kỳ",
+"Giảm 50k",
+"Tôm tempura",
+"Takoyaki 6 viên",
+"Gà cay phô mai",
+"Ngôi sao may mắn",
+"Voucher 100k"
+];
 
-  if (!(code in codes)) {
+let codes = {
+"CODE01": false,
+"CODE02": false,
+"CODE03": false,
+"CODE04": false,
+"CODE05": false
+};
+
+let angle = 0;
+
+function spin(){
+  let code = document.getElementById("code").value;
+
+  if(!(code in codes)){
     alert("Mã không hợp lệ");
     return;
   }
-
-  if (codes[code]) {
+  if(codes[code]){
     alert("Mã đã dùng");
     return;
   }
 
-  let available = prizes.filter(p => p.qty > 0);
-  if (available.length === 0) {
-    alert("Hết quà");
-    return;
-  }
+  let index = Math.floor(Math.random()*prizes.length);
+  let deg = 360/prizes.length * index + 1440;
 
-  let prize = available[Math.floor(Math.random() * available.length)];
-  prize.qty--;
-  codes[code] = true;
+  angle += deg;
+  document.getElementById("wheel").style.transform =
+    "rotate(" + angle + "deg)";
 
-  document.getElementById("result").innerText = "🎁 Bạn trúng: " + prize.name;
+  codes[code]=true;
+
+  setTimeout(()=>{
+    document.getElementById("result").innerText =
+      "🎁 Bạn trúng: " + prizes[index];
+  },4000);
 }
 </script>
 
