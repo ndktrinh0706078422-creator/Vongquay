@@ -1,13 +1,13 @@
 let prizes = [
-  { name: "Freeship", qty: 1 },
-  { name: "1 phần đồ thêm mì bất kỳ", qty: 1 },
-  { name: "1 ly nước bất kỳ", qty: 1 },
-  { name: "Giảm 50k", qty: 1 },
-  { name: "Tôm Tempura", qty: 1 },
-  { name: "Takoyaki 6 viên", qty: 1 },
-  { name: "Gà cay phô mai", qty: 1 },
-  { name: "Ngôi sao may mắn", qty: 1 },
-  { name: "Voucher 100k", qty: 1 }
+  { name: "Freeship", qty: 999 },
+  { name: "1 phần đồ thêm mì bất kỳ", qty: 999 },
+  { name: "1 ly nước bất kỳ", qty: 999 },
+  { name: "Giảm 50k", qty: 999 },
+  { name: "Tôm Tempura", qty: 999 },
+  { name: "Takoyaki 6 viên", qty: 999 },
+  { name: "Gà cay phô mai", qty: 999 },
+  { name: "Ngôi sao may mắn", qty: 999 },
+  { name: "Voucher 100k", qty: 999 }
 ];
 
 let codes = {
