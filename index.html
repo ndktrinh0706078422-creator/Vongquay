@@ -88,16 +88,14 @@ function spin(){
   setTimeout(()=>{
     document.getElementById("result").innerText =
       "🎁 " + prizes[prizeIndex];
-    // Gửi dữ liệu vào Google Form tự động
-fetch("https://docs.google.com/forms/d/e/1FAIpQLSfc-5md1qHTlQITjo2NAa7JaveDqT22g6drfIyFxky_-2N3LQ/formResponse?entry.1160892158="
-+ encodeURIComponent(code) 
-+ "&entry.932048524=" + encodeURIComponent(prize))
-  .then(response => {
-    console.log("Đã gửi kết quả tới Google Sheets");
-  })
-  .catch(error => {
-    console.error("Lỗi gửi Sheets:", error);
-  });
+    // Gửi kết quả về Google Form
+let url = "https://docs.google.com/forms/d/e/1FAIpQLSfc-5md1qHTlQITjo2NAa7JaveDqT22g6drfIyFxky_-2N3LQ/formResponse"
+  + "?entry.1160892158=" + encodeURIComponent(code)
+  + "&entry.932048524=" + encodeURIComponent(prize);
+
+// dùng ảnh ẩn để gửi (tránh lỗi Safari)
+let img = new Image();
+img.src = url;
   },4000);
 }
 </script>
