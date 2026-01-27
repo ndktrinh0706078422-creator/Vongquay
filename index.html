@@ -86,8 +86,10 @@ function spin(){
   document.getElementById("wheel").style.transform = "rotate("+angle+"deg)";
 
   setTimeout(()=>{
-    document.getElementById("result").innerText =
-      "🎁 " + prizes[prizeIndex];
+    let prize = prizes[prizeIndex];
+    
+document.getElementById("result").innerText =
+  "🎁 " + prize;
     // Gửi kết quả về Google Form
 let url = "https://docs.google.com/forms/d/e/1FAIpQLSfc-5md1qHTlQITjo2NAa7JaveDqT22g6drfIyFxky_-2N3LQ/formResponse"
   + "?entry.1160892158=" + encodeURIComponent(code)
