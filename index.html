@@ -44,10 +44,11 @@ body { text-align:center; font-family:Arial; background:#fffbe6; }
 
 <script>
 let prizes = ["Freeship","Giảm 50k","1 phần ăn","1 ly nước","Voucher 100k","Chúc may mắn"];
-let codes = {
-  "CODE01": false,
-  "CODE02": false,
-  "CODE03": false
+let codes = {};
+
+for (let i = 1; i <= 500; i++) {
+  let c = "CODE" + String(i).padStart(3, "0");
+  codes[c] = false;
 };
 
 let angle = 0;
