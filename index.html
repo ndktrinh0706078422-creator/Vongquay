@@ -4,93 +4,78 @@
 <meta charset="UTF-8">
 <title>Vòng quay may mắn</title>
 <style>
-body { text-align:center; font-family:sans-serif; }
+body { text-align:center; font-family:Arial; background:#fffbe6; }
 #wheel {
   width:300px; height:300px;
   border-radius:50%;
-  border:8px solid gold;
+  border:8px solid #333;
   margin:20px auto;
-  background: conic-gradient(
-    #ff9999 0deg 40deg,
-    #99ff99 40deg 80deg,
-    #9999ff 80deg 120deg,
-    #ffff99 120deg 160deg,
-    #ffcc99 160deg 200deg,
-    #cc99ff 200deg 240deg,
-    #99ffff 240deg 280deg,
-    #ff99cc 280deg 320deg,
-    #cccccc 320deg 360deg
+  background:conic-gradient(
+    #ff9999 0deg 60deg,
+    #99ff99 60deg 120deg,
+    #9999ff 120deg 180deg,
+    #ffff99 180deg 240deg,
+    #ffcc99 240deg 300deg,
+    #cc99ff 300deg 360deg
   );
   transition: transform 4s ease-out;
 }
-#pointer{
+#pointer {
   width:0;height:0;
   border-left:15px solid transparent;
   border-right:15px solid transparent;
-  border-bottom:25px solid red;
-  margin:auto;
+  border-bottom:30px solid red;
+  margin:0 auto;
 }
 </style>
 </head>
-<body>
 
+<body>
 <h1>🎉 Vòng quay may mắn 🎉</h1>
+
 <div id="pointer"></div>
 <div id="wheel"></div>
 
-<input id="code" placeholder="Nhập mã">
-<br><br>
+<br>
+<input id="codeInput" placeholder="Nhập mã">
 <button onclick="spin()">QUAY</button>
 
 <h2 id="result"></h2>
 
 <script>
-let prizes = [
-"Freeship",
-"1 phần đồ thêm mì bất kỳ",
-"1 ly nước bất kỳ",
-"Giảm 50k",
-"Tôm tempura",
-"Takoyaki 6 viên",
-"Gà cay phô mai",
-"Ngôi sao may mắn",
-"Voucher 100k"
-];
-
+let prizes = ["Freeship","Giảm 50k","1 phần ăn","1 ly nước","Voucher 100k","Chúc may mắn"];
 let codes = {
-"CODE01": false,
-"CODE02": false,
-"CODE03": false,
-"CODE04": false,
-"CODE05": false
+  "CODE01": false,
+  "CODE02": false,
+  "CODE03": false
 };
 
 let angle = 0;
 
 function spin(){
-  let code = document.getElementById("code").value;
+  let code = document.getElementById("codeInput").value;
 
   if(!(code in codes)){
     alert("Mã không hợp lệ");
     return;
   }
+
   if(codes[code]){
     alert("Mã đã dùng");
     return;
   }
 
-  let index = Math.floor(Math.random()*prizes.length);
-  let deg = 360/prizes.length * index + 1440;
+  codes[code] = true;
 
-  angle += deg;
-  document.getElementById("wheel").style.transform =
-    "rotate(" + angle + "deg)";
+  let prizeIndex = Math.floor(Math.random()*prizes.length);
+  let rotateDeg = 360*5 + prizeIndex*(360/prizes.length);
 
-  codes[code]=true;
+  angle += rotateDeg;
+  document.getElementById("wheel").style.transform = "rotate("+angle+"deg)";
 
   setTimeout(()=>{
     document.getElementById("result").innerText =
-      "🎁 Bạn trúng: " + prizes[index];
+      "🎁 Bạn trúng: " + prizes[prizeIndex];
   },4000);
 }
 </script>
