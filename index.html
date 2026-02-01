@@ -6,13 +6,15 @@
 <style>
 body { text-align:center; font-family:Arial; background:#fffbe6; }
 #wheel {
-  width:95vw;
-  height:95vw;
-  max-width:520px;
-  max-height:520px;
+  width:90vw;
+  height:90vw;
+  max-width:none;
+  max-height:none;
+
   border-radius:50%;
   border:8px solid #333;
   margin:10px auto;
+
   background:conic-gradient(
     #ff9999 0deg 60deg,
     #99ff99 60deg 120deg,
@@ -21,6 +23,7 @@ body { text-align:center; font-family:Arial; background:#fffbe6; }
     #ffcc99 240deg 300deg,
     #cc99ff 300deg 360deg
   );
+
   transition: transform 4s ease-out;
 }
 #pointer {
