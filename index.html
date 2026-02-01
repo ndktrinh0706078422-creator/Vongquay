@@ -91,9 +91,9 @@ function spin(){
 document.getElementById("result").innerText =
   "🎁 " + prize;
     // Gửi kết quả về Google Form
-let url = "https://docs.google.com/forms/d/e/1FAIpQLSfc-5md1qHTlQITjo2NAa7JaveDqT22g6drfIyFxky_-2N3LQ/formResponse"
-  + "?entry.1160892158=" + encodeURIComponent(code)
-  + "&entry.932048524=" + encodeURIComponent(prize);
+let url = "https://script.google.com/macros/s/AKfycby1S2N5MHz8ba0nmle_F_jPmcsfTq0nCuiWHrA1E3La9jw4XynwIYbKsnWRijibCbkS/exec"
+  + "?code=" + encodeURIComponent(code)
+  + "&prize=" + encodeURIComponent(prizes[prizeIndex]);
 
 // dùng ảnh ẩn để gửi (tránh lỗi Safari)
 let img = new Image();
