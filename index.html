@@ -109,11 +109,8 @@ let prizes = [
   "Takoyaki 6 viên",
   
 ];
-let codes = {};
-
-for (let i = 1; i <= 500; i++) {
-  let c = "CODE" + String(i).padStart(3, "0");
-  codes[c] = false;
+let codes = {
+  "CODE001": false
 };
 
 let angle = 0;
